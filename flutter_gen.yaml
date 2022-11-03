@@ -1,0 +1,27 @@
+# pubspec.yaml
+# ...
+
+flutter_gen:
+  # output: lib/gen/ # Optional (default: lib/gen/)
+  # line_length: 80 # Optional (default: 80)
+
+  # Optional
+  # integrations:
+  #   flutter_svg: true
+  #   flare_flutter: true
+  #   rive: true
+  #   lottie: true
+
+  # colors:
+  #   inputs:
+  #     - assets/color/colors.xml
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/social/
+    - assets/categories/
+    - assets/top_destinations/
+    - assets/popular_destinations/
