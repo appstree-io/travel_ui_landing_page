@@ -39,25 +39,13 @@ class NewsletterWidget extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Container(
-              width: ResponsiveValue(
-                context,
-                defaultValue: 450.0,
-                valueWhen: const [
-                  Condition.smallerThan(
-                    name: MOBILE,
-                    value: 250.0,
-                  ),
-                  Condition.largerThan(
-                    name: TABLET,
-                    value: 300.0,
-                  ),
-                  Condition.largerThan(
-                    name: DESKTOP,
-                    value: 450.0,
-                  )
-                ],
-              ).value!,
-              height: 60,
+              constraints: const BoxConstraints(
+                maxWidth: 450,
+                maxHeight: 60,
+              ),
+              // width: 450,
+              // height: 60,
+              margin: const EdgeInsets.symmetric(horizontal: 30),
               padding: const EdgeInsets.symmetric(
                 horizontal: 12,
                 vertical: 10,
