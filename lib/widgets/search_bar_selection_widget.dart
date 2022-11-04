@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 
 class SearchBarSelectionWidget extends StatelessWidget {
@@ -23,22 +22,24 @@ class SearchBarSelectionWidget extends StatelessWidget {
         Text(
           title,
           style: TextStyles.inter(
-            fontSize: 18.sp,
+            context: context,
+            fontSize: 18,
             fontWeight: FontWeight.w500,
             color: const Color(0xFF2D3134),
           ),
         ),
-        8.verticalSpaceFromWidth,
+        const SizedBox(height: 8),
         Row(
           children: [
             Text(
               description,
               style: TextStyles.inter(
-                fontSize: 12.sp,
+                context: context,
+                fontSize: 12,
                 color: const Color(0xFF9498A4),
               ),
             ),
-            25.horizontalSpaceRadius,
+            const SizedBox(width: 25),
             image,
           ],
         ),

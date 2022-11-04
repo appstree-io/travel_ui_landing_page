@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../utils/utils.dart';
+import 'package:travel_ui_landing_page/utils/utils.dart';
 
 class PopularDestinationItem extends StatelessWidget {
   const PopularDestinationItem({
@@ -24,11 +22,11 @@ class PopularDestinationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 450.sm,
-      width: 395.sm,
-      margin: EdgeInsets.only(right: 30.r),
+      height: 450,
+      width: 395,
+      margin: const EdgeInsets.only(right: 30),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.r),
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: Colors.white,
             width: 2,
@@ -43,11 +41,11 @@ class PopularDestinationItem extends StatelessWidget {
               top: 12,
               left: 12,
               right: 12,
-            ).r,
+            ),
             child: Image.asset(
               image,
-              width: 362.sm,
-              height: 252.sm,
+              width: 362,
+              height: 252,
             ),
           ),
           Padding(
@@ -56,29 +54,31 @@ class PopularDestinationItem extends StatelessWidget {
               left: 24,
               right: 24,
               bottom: 25,
-            ).r,
+            ),
             child: Column(
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignmentaceBetween,
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   title,
                   style: TextStyles.inter(
-                    fontSize: 24.sp,
+                    context: context,
+                    fontSize: 24,
                     color: AppsColors.headerDescriptionTextColor,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                12.verticalSpacingRadius,
+                const SizedBox(height: 12),
                 Text(
                   description,
                   style: TextStyles.inter(
-                    fontSize: 14.sp,
+                    context: context,
+                    fontSize: 14,
                     color: AppsColors.defaultTextColor,
                   ),
                 ),
-                20.verticalSpacingRadius,
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -86,7 +86,8 @@ class PopularDestinationItem extends StatelessWidget {
                       TextSpan(
                         text: '\$$price',
                         style: TextStyles.inter(
-                          fontSize: 24.sp,
+                          context: context,
+                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                           color: AppsColors.headerDescriptionTextColor,
                         ),
@@ -94,7 +95,8 @@ class PopularDestinationItem extends StatelessWidget {
                           TextSpan(
                             text: ' /Person',
                             style: TextStyles.inter(
-                              fontSize: 16.sp,
+                              context: context,
+                              fontSize: 16,
                               color: AppsColors.defaultTextColor,
                             ),
                           ),
@@ -102,8 +104,8 @@ class PopularDestinationItem extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 100.sm,
-                      height: 37.sm,
+                      width: 100,
+                      height: 37,
                       child: TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -111,16 +113,17 @@ class PopularDestinationItem extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                             vertical: 11,
-                          ).w,
+                          ),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(46).w,
+                              borderRadius: BorderRadius.circular(46),
                               side: const BorderSide(
                                   color: AppsColors.defaultTextColor)),
                         ),
                         child: Text(
                           'Book Now',
                           style: TextStyles.inter(
-                            fontSize: 13.sp,
+                            context: context,
+                            fontSize: 13,
                             color: buttonTextColor,
                           ),
                         ),

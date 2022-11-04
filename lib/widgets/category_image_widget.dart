@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/models/models.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 
@@ -17,7 +16,7 @@ class CategoryImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.only(right: (index == categories.length + 1) ? 0 : 20.r),
+          EdgeInsets.only(right: (index == categories.length + 1) ? 0 : 20),
       child: Column(
         children: [
           Stack(
@@ -25,26 +24,28 @@ class CategoryImageWidget extends StatelessWidget {
             children: [
               Image.asset(
                 catergory.image,
-                height: 230.sm,
-                width: 170.sm,
+                height: 230,
+                width: 170,
               ),
               Align(
                 child: Text(
                   catergory.middleText,
                   style: TextStyles.inter(
-                    fontSize: 22.sp,
+                    context: context,
+                    fontSize: 22,
                     fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
                 ),
-              )
+              ),
             ],
           ),
-          18.verticalSpace,
+          const SizedBox(height: 18),
           Text(
             catergory.title,
             style: TextStyles.inter(
-              fontSize: 26.sp,
+              context: context,
+              fontSize: 26,
               fontWeight: FontWeight.w500,
             ),
           ),

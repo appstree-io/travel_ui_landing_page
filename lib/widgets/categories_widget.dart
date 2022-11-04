@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
 
 import '../utils/utils.dart';
@@ -11,30 +11,74 @@ class CategoriesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallerThanTablet =
+        ResponsiveWrapper.of(context).isSmallerThan(TABLET);
     return DefaultPadding(
       child: Padding(
-        padding: EdgeInsets.only(top: 18.sm, bottom: 32.0.sm),
+        padding: const EdgeInsets.only(
+          top: 18,
+          bottom: 32.0,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const ModulesHeadingWidget(title: 'Categories'),
-            24.verticalSpace,
+            const SizedBox(height: 24),
             Text(
               'Here are lots of interesting destinations to visit, \nbut don’t be confused—they’re already grouped \nby category.',
               style: TextStyles.inter(
-                fontSize: 16.sp,
+                context: context,
+                fontSize: 16,
                 color: AppsColors.headerDescriptionTextColor,
               ),
             ),
-            60.verticalSpace,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: categories
-                  .mapIndexed((category, index) => CategoryImageWidget(
-                        catergory: category,
-                        index: index,
-                      ))
-                  .toList(),
+            const SizedBox(height: 60),
+            ResponsiveRowColumn(
+              columnSpacing: 20,
+              layout: isSmallerThanTablet
+                  ? ResponsiveRowColumnType.COLUMN
+                  : ResponsiveRowColumnType.ROW,
+              // rowMainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  rowFit: FlexFit.loose,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ...categories
+                          .take(3)
+                          .mapIndexed(
+                            (category, index) => Flexible(
+                              child: CategoryImageWidget(
+                                catergory: category,
+                                index: index,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ],
+                  ),
+                ),
+                ResponsiveRowColumnItem(
+                  rowFlex: 1,
+                  rowFit: FlexFit.loose,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ...categories
+                          .skip(3)
+                          .mapIndexed((category, index) => Flexible(
+                                child: CategoryImageWidget(
+                                  catergory: category,
+                                  index: index,
+                                ),
+                              ))
+                          .toList(),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),

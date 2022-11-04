@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
 
@@ -29,12 +28,13 @@ class TopDestinationItemWidget extends StatelessWidget {
         children: [
           Image.asset(
             image,
-            width: width.sm,
-            height: height.sm,
+            width: width,
+            height: height,
+            // fit: BoxFit.cover,
           ),
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20).w,
+              borderRadius: BorderRadius.circular(20),
               gradient: const LinearGradient(
                 colors: [
                   Color(0x001E1E1C),
@@ -44,24 +44,26 @@ class TopDestinationItemWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 20.sm,
-            left: 20.sm,
+            bottom: 20,
+            left: 20,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Vietnam',
                   style: TextStyles.inter(
-                    fontSize: 20.sp,
+                    context: context,
+                    fontSize: 20,
                     fontWeight: FontWeight.w600,
                     color: Colors.white,
                   ),
                 ),
-                10.verticalSpacingRadius,
+                const SizedBox(height: 10),
                 Text(
                   'Worefall',
                   style: TextStyles.inter(
-                    fontSize: 14.sp,
+                    context: context,
+                    fontSize: 14,
                     color: Colors.white,
                   ),
                 ),
@@ -69,8 +71,8 @@ class TopDestinationItemWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 20.sm,
-            left: 20.sm,
+            top: 20,
+            left: 20,
             child: TopDestinationChip(
               title: '$rating',
               textColor: chipTextColor,

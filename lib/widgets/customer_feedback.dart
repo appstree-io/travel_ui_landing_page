@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:travel_ui_landing_page/gen/assets.gen.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
@@ -11,34 +11,44 @@ class CustomerFeedback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isSmallerThanTablet =
+        ResponsiveWrapper.of(context).isSmallerThan(TABLET);
     return DefaultPadding(
       vertical: 58,
-      child: Row(
+      child: ResponsiveRowColumn(
+        rowSpacing: 175,
+        columnSpacing: 40,
+        layout: isSmallerThanTablet
+            ? ResponsiveRowColumnType.COLUMN
+            : ResponsiveRowColumnType.ROW,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(245).r,
-            child: Stack(
-              children: [
-                ColoredBox(
-                  color: const Color(0xFFEE8162),
-                  child: Assets.guyTakingSelfie.image(
-                    width: 407.sm,
-                    height: 563.sm,
+          ResponsiveRowColumnItem(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(245),
+              child: Stack(
+                children: [
+                  ColoredBox(
+                    color: const Color(0xFFEE8162),
+                    child: Assets.guyTakingSelfie.image(
+                      width: 407,
+                      height: 563,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-          175.horizontalSpaceRadius,
-          Expanded(
+          // const SizedBox(width: 175),
+          ResponsiveRowColumnItem(
+            rowFlex: 1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  width: 67.sm,
-                  height: 8.sm,
+                  width: 67,
+                  height: 8,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4).w,
+                    borderRadius: BorderRadius.circular(4),
                     gradient: const LinearGradient(
                       colors: [
                         Color(0xFFFFD482),
@@ -47,23 +57,24 @@ class CustomerFeedback extends StatelessWidget {
                     ),
                   ),
                 ),
-                12.verticalSpaceFromWidth,
+                const SizedBox(height: 12),
                 const ModuleHeadingTitle(
                   title: 'A Customer Said About Us:',
                 ),
-                26.verticalSpaceFromWidth,
+                const SizedBox(height: 26),
                 Container(
-                  padding: const EdgeInsets.all(30).r,
+                  padding: const EdgeInsets.all(30),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(14).w,
+                    borderRadius: BorderRadius.circular(14),
                   ),
                   child: Column(
                     children: [
                       Text(
                         'Salty helped me a lot in finding the best place for our first outdoor adventure trip. They responded very quickly and gave me a detailed account of the place—its history, as well as its best features.',
                         style: TextStyles.inter(
-                          fontSize: 18.sp,
+                          context: context,
+                          fontSize: 18,
                         ),
                       ),
                       Row(
@@ -86,14 +97,16 @@ class CustomerFeedback extends StatelessWidget {
                               Text(
                                 'Andrew Sarma',
                                 style: TextStyles.inter(
-                                  fontSize: 20.sp,
+                                  context: context,
+                                  fontSize: 20,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
                                 'Enterpreneur',
                                 style: TextStyles.inter(
-                                  fontSize: 12.sp,
+                                  context: context,
+                                  fontSize: 12,
                                 ),
                               ),
                             ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:travel_ui_landing_page/gen/assets.gen.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
@@ -23,27 +23,27 @@ class FooterWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SaltyLogo(),
-                20.verticalSpaceFromWidth,
+                const SizedBox(height: 20),
                 Text(
                   'Enjoy the touring \nwith Salty',
-                  style: inter16,
+                  style: inter16(context),
                 ),
-                40.verticalSpaceFromWidth,
+                const SizedBox(height: 40),
                 Row(
                   children: [
                     Assets.social.facebook.image(
-                      height: 32.sm,
-                      width: 32.sm,
+                      height: 32,
+                      width: 32,
                     ),
-                    14.horizontalSpaceRadius,
+                    const SizedBox(width: 14),
                     Assets.social.instagram.image(
-                      height: 32.sm,
-                      width: 32.sm,
+                      height: 32,
+                      width: 32,
                     ),
-                    14.horizontalSpaceRadius,
+                    const SizedBox(width: 14),
                     Assets.social.twitter.image(
-                      height: 32.sm,
-                      width: 32.sm,
+                      height: 32,
+                      width: 32,
                     ),
                   ],
                 ),
@@ -56,32 +56,44 @@ class FooterWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                FooterMenu(
-                  heading: 'Resources',
-                  menu: [
-                    'Download',
-                    'Help Center',
-                    'Guide Book',
-                    'App Directory',
-                  ],
+                ResponsiveVisibility(
+                  visible: false,
+                  visibleWhen: [Condition.largerThan(name: TABLET)],
+                  child: FooterMenu(
+                    heading: 'Resources',
+                    menu: [
+                      'Download',
+                      'Help Center',
+                      'Guide Book',
+                      'App Directory',
+                    ],
+                  ),
                 ),
-                FooterMenu(
-                  heading: 'Travellers',
-                  menu: [
-                    'Why Travellers',
-                    'Enterprice',
-                    'Customer Stories',
-                    'Instagram post',
-                  ],
+                ResponsiveVisibility(
+                  visible: false,
+                  visibleWhen: [Condition.largerThan(name: TABLET)],
+                  child: FooterMenu(
+                    heading: 'Travellers',
+                    menu: [
+                      'Why Travellers',
+                      'Enterprice',
+                      'Customer Stories',
+                      'Instagram post',
+                    ],
+                  ),
                 ),
-                FooterMenu(
-                  heading: 'Company',
-                  menu: [
-                    'Travelling',
-                    'About Locato',
-                    'Success',
-                    'Information',
-                  ],
+                ResponsiveVisibility(
+                  visible: false,
+                  visibleWhen: [Condition.largerThan(name: TABLET)],
+                  child: FooterMenu(
+                    heading: 'Company',
+                    menu: [
+                      'Travelling',
+                      'About Locato',
+                      'Success',
+                      'Information',
+                    ],
+                  ),
                 ),
                 FooterMenu(
                   heading: 'Get App',

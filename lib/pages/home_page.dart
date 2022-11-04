@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
 
@@ -12,22 +11,22 @@ class HomePage extends StatelessWidget {
       backgroundColor: AppsColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            const HeaderWidget(),
-            const FirstModule(),
-            const CategoriesWidget(),
-            58.verticalSpaceFromWidth,
-            const OurExperienceWidget(),
-            32.verticalSpaceFromWidth,
-            const FindPopularDestination(),
-            32.verticalSpaceFromWidth,
-            const TopDestinations(),
-            37.verticalSpaceFromWidth,
-            const CustomerFeedback(),
-            28.verticalSpaceFromWidth,
-            const NewsletterWidget(),
-            15.verticalSpaceFromWidth,
-            const FooterWidget()
+          children: const [
+            HeaderWidget(),
+            FirstModule(),
+            CategoriesWidget(),
+            SizedBox(height: 58),
+            OurExperienceWidget(),
+            SizedBox(height: 32),
+            FindPopularDestination(),
+            SizedBox(height: 32),
+            TopDestinations(),
+            SizedBox(height: 37),
+            CustomerFeedback(),
+            SizedBox(height: 28),
+            NewsletterWidget(),
+            SizedBox(height: 15),
+            FooterWidget()
           ],
         ),
       ),

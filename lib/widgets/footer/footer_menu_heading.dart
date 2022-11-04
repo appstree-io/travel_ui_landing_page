@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 
 class FooterMenuHeading extends StatelessWidget {
@@ -14,7 +13,8 @@ class FooterMenuHeading extends StatelessWidget {
     return Text(
       title,
       style: TextStyles.inter(
-        fontSize: 18.sp,
+        context: context,
+        fontSize: 18,
         fontWeight: FontWeight.w500,
       ),
     );

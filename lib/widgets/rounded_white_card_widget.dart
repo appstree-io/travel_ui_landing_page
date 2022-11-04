@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 const _defaultPadding = EdgeInsets.symmetric(horizontal: 14, vertical: 20);
 
@@ -21,10 +20,10 @@ class RoundedWhiteCardWidget extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-      padding: padding.r,
+      padding: padding,
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14.r),
+        borderRadius: BorderRadius.circular(14),
       ),
       child: child,
     );

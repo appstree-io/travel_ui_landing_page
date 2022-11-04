@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../utils/utils.dart';
 
@@ -36,7 +35,8 @@ class ModuleHeadingTitle extends StatelessWidget {
     return Text(
       title,
       style: TextStyles.inter(
-        fontSize: 56.sp,
+        context: context,
+        fontSize: 56,
         fontWeight: FontWeight.w600,
       ),
     );
@@ -51,15 +51,15 @@ class ModuleHeadingNextPreviousButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: const [
         // Previous Button
-        const ModuleHeadingButton(
+        ModuleHeadingButton(
           icon: Icons.arrow_back_ios_new_rounded,
           iconColor: AppsColors.defaultTextColor,
         ),
-        16.horizontalSpace,
+        SizedBox(width: 16),
         // Next Button
-        const ModuleHeadingButton(
+        ModuleHeadingButton(
           icon: Icons.arrow_forward_ios_rounded,
           iconColor: AppsColors.backgroundColor,
           backgroundColor: AppsColors.defaultTextColor,
@@ -84,8 +84,8 @@ class ModuleHeadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 56.sm,
-      height: 56.sm,
+      width: 56,
+      height: 56,
       child: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: backgroundColor,
@@ -98,7 +98,7 @@ class ModuleHeadingButton extends StatelessWidget {
         ),
         child: Icon(
           icon,
-          size: 12.sm,
+          size: 12,
           color: iconColor,
         ),
         onPressed: () {},

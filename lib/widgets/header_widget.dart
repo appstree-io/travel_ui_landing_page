@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:travel_ui_landing_page/gen/assets.gen.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 import 'package:travel_ui_landing_page/widgets/widgets.dart';
@@ -13,38 +13,48 @@ class HeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultPadding(
-      vertical: 24.sm,
+      vertical: 24,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
           const SaltyLogo(),
-          72.horizontalSpace,
+          const ResponsiveVisibility(
+            hiddenWhen: [
+              Condition.smallerThan(name: TABLET),
+            ],
+            child: SizedBox(width: 72),
+          ),
           // Navigation
-          Row(
-            children: navigation
-                .map<Widget>(
-                  (String items) => Padding(
-                    padding: EdgeInsets.only(right: 36.sm),
-                    child: Text(
-                      items,
-                      style: GoogleFonts.poppins(
-                        fontSize: 16.sp,
-                        color: AppsColors.navigationTextColor,
+          ResponsiveVisibility(
+            hiddenWhen: const [
+              Condition.smallerThan(name: TABLET),
+            ],
+            child: Row(
+              children: navigation
+                  .map<Widget>(
+                    (String items) => Padding(
+                      padding: const EdgeInsets.only(right: 36),
+                      child: Text(
+                        items,
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: AppsColors.navigationTextColor,
+                        ),
                       ),
                     ),
-                  ),
-                )
-                .toList(),
+                  )
+                  .toList(),
+            ),
           ),
           const Spacer(),
           TextButton(
             style: TextButton.styleFrom(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24.sm,
-                vertical: 19.sm,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 19,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(27).r,
+                borderRadius: BorderRadius.circular(27),
                 side: const BorderSide(
                   color: AppsColors.buttonColor,
                   width: 1.4,
@@ -57,15 +67,15 @@ class HeaderWidget extends StatelessWidget {
                 Text(
                   'Book Now',
                   style: GoogleFonts.poppins(
-                    fontSize: 16.sp,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: AppsColors.buttonColor,
                   ),
                 ),
-                6.horizontalSpace,
+                const SizedBox(width: 6),
                 Assets.icons.sendIcon.image(
-                  width: 16.sm,
-                  height: 15.sm,
+                  width: 16,
+                  height: 15,
                 ),
               ],
             ),

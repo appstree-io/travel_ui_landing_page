@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class TextStyles {
   TextStyles._();
@@ -8,9 +8,10 @@ class TextStyles {
     required double fontSize,
     FontWeight? fontWeight,
     Color? color,
+    required BuildContext context,
   }) =>
       GoogleFonts.poppins(
-        fontSize: fontSize,
+        fontSize: resonsiveFontSize(context, fontSize),
         fontWeight: fontWeight,
         color: color,
       );
@@ -20,9 +21,10 @@ class TextStyles {
     FontWeight? fontWeight,
     Color? color,
     double? height,
+    required BuildContext context,
   }) =>
       GoogleFonts.sen(
-          fontSize: fontSize,
+          fontSize: resonsiveFontSize(context, fontSize),
           fontWeight: fontWeight,
           color: color,
           height: height);
@@ -31,12 +33,34 @@ class TextStyles {
     required double fontSize,
     FontWeight? fontWeight,
     Color? color,
+    required BuildContext context,
   }) =>
       GoogleFonts.inter(
-        fontSize: fontSize,
+        fontSize: resonsiveFontSize(context, fontSize),
         fontWeight: fontWeight,
         color: color,
       );
 }
 
-TextStyle get inter16 => TextStyles.inter(fontSize: 16.sp);
+TextStyle inter16(BuildContext context) =>
+    TextStyles.inter(context: context, fontSize: 16);
+
+double resonsiveFontSize(BuildContext context, double fontSize) =>
+    ResponsiveValue(
+      context,
+      defaultValue: fontSize,
+      valueWhen: [
+        Condition.smallerThan(
+          name: MOBILE,
+          value: fontSize / 1.5,
+        ),
+        Condition.smallerThan(
+          name: TABLET,
+          value: fontSize / 1.25,
+        ),
+        // Condition.largerThan(
+        //   name: TABLET,
+        //   value: 80.0,
+        // )
+      ],
+    ).value!;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:travel_ui_landing_page/utils/utils.dart';
 
 class TopDestinationChip extends StatelessWidget {
@@ -21,12 +20,13 @@ class TopDestinationChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 14.0).r,
+      padding: const EdgeInsets.only(right: 14.0),
       child: Chip(
         label: Text(
           title,
           style: TextStyles.poppins(
-            fontSize: fontSize.sp,
+            context: context,
+            fontSize: fontSize,
             color: textColor,
           ),
         ),
